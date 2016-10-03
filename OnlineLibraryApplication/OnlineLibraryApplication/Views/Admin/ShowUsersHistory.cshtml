@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OnlineLibraryApplication.Models.UserHistory>
+
+@{
+    ViewBag.Title = "UserHistory";
+}
+
+<h2>Users' Reserved Books</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("Surname")
+        </th>
+        <th>
+            @Html.DisplayName("Email")
+        </th>
+        <th>
+            @Html.DisplayName("Book Title")
+        </th>
+        <th>
+            @Html.DisplayName("Return Date")
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.User_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.User_Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookStatus.BookInfo.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookStatus.ReturnDate)
+        </td>
+      
+      
+    </tr>
+}
+
+</table>

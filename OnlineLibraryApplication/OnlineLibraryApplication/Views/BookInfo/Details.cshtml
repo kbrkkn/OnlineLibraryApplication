@@ -1,0 +1,51 @@
+﻿@model IEnumerable<OnlineLibraryApplication.Models.BookStatus>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Reservation Page";
+}
+
+<h2>Reservation Page</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Book Title")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th>
+            @Html.DisplayName("Return Date")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookInfo.Name)
+        </td>
+        <td>@if (item.IsReserved == false)
+        {            @Html.DisplayName("Able")
+        }
+        @if (item.IsReserved == true) { 
+@Html.DisplayName("Reserved")}
+             
+
+     
+        </td>
+        <td>
+            @if (item.IsReserved == true) { 
+            @Html.DisplayFor(modelItem => item.ReturnDate)}
+        </td>
+        <td>
+            @if (item.IsReserved == false ) { 
+            @Html.ActionLink("RESERVE", "ReserveBook", "BookStatus", new { id=item.BookId},"")
+            }
+
+                </td>
+    </tr>
+}
+
+</table>
